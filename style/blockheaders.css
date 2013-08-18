@@ -1,0 +1,33 @@
+.block .header h2 {padding-left:18px;background-color: transparent;background-image: none;}
+        
+.region-content .block_site_main_menu .header h2 {background : transparent url([[pix:theme|blockheaders/menu]]) no-repeat left top;margin-left:2px;}
+.region-content .block_navigation .header h2 {background : transparent url([[pix:theme|blockheaders/compass]]) no-repeat left top;margin-left:2px;}
+.region-content .block_calendar_month .header h2 {background : transparent url([[pix:theme|blockheaders/calendar]]) no-repeat left top;margin-left:2px;}
+.region-content .block_settings .header h2 {background : transparent url([[pix:theme|blockheaders/settings]]) no-repeat left top;margin-left:2px;}
+.region-content .block_calendar_upcoming .header h2 {background : transparent url([[pix:theme|blockheaders/event]]) no-repeat left top;margin-left:2px;}
+.region-content .block_activity_modules .header h2 {background : transparent url([[pix:theme|blockheaders/all]]) no-repeat left top;margin-left:2px;}
+.region-content .block_admin_bookmarks .header h2 {background : transparent url([[pix:theme|blockheaders/admin]]) no-repeat left top;margin-left:2px;}
+.region-content .block_blog_menu .header h2 {background : transparent url([[pix:theme|blockheaders/feedback]]) no-repeat left top;margin-left:2px;}
+.region-content .block_blog_tags .header h2 {background : transparent url([[pix:theme|blockheaders/tag-label]]) no-repeat left top;margin-left:2px;}
+.region-content .block_comments .header h2 {background : transparent url([[pix:theme|blockheaders/feedback]]) no-repeat left top;margin-left:2px;}
+.region-content .block_community .header h2 {background : transparent url([[pix:theme|blockheaders/cohort]]) no-repeat left top;margin-left:2px;}
+.region-content .block_completionstatus .header h2 {background : transparent url([[pix:theme|blockheaders/completion]]) no-repeat left top;margin-left:2px;}
+.region-content .block_course_list .header h2 {background : transparent url([[pix:theme|blockheaders/course]]) no-repeat left top;margin-left:2px;}
+.region-content .block_news_items .header h2 {background : transparent url([[pix:theme|blockheaders/news]]) no-repeat left top;margin-left:2px;}
+.region-content .block_myprofile .header h2 {background : transparent url([[pix:theme|blockheaders/user]]) no-repeat left top;margin-left:2px;}
+.region-content .block_login .header h2 {background : transparent url([[pix:theme|blockheaders/door]]) no-repeat left top;margin-left:2px;}
+.region-content .block_mentees .header h2 {background : transparent url([[pix:theme|blockheaders/group]]) no-repeat left top;margin-left:2px;}
+.region-content .block_messages .header h2 {background : transparent url([[pix:theme|blockheaders/email]]) no-repeat left top;margin-left:2px;}
+.region-content .block_private_files .header h2 {background : transparent url([[pix:theme|blockheaders/db]]) no-repeat left top;margin-left:2px;}
+.region-content .block_mnet_hosts .header h2 {background : transparent url([[pix:theme|blockheaders/network]]) no-repeat left top;margin-left:2px;}
+.region-content .block_online_users .header h2 {background : transparent url([[pix:theme|blockheaders/users]]) no-repeat left top;margin-left:2px;}
+.region-content .block_participants .header h2 {background : transparent url([[pix:theme|blockheaders/cohort]]) no-repeat left top;margin-left:2px;}
+.region-content .block_recent_activity .header h2 {background : transparent url([[pix:theme|blockheaders/traffic-light]]) no-repeat left top;margin-left:2px;}
+.region-content .block_blog_recent .header h2 {background : transparent url([[pix:theme|blockheaders/feedback]]) no-repeat left top;margin-left:2px;}
+.region-content .block_rss_client .header h2 {background : transparent url([[pix:theme|blockheaders/rss]]) no-repeat left top;margin-left:2px;}
+.region-content .block_search_forums .header h2 {background : transparent url([[pix:theme|blockheaders/search]]) no-repeat left top;margin-left:2px;}
+.region-content .block_selfcompletion .header h2 {background : transparent url([[pix:theme|blockheaders/completion]]) no-repeat left top;margin-left:2px;}
+.region-content .block_tags .header h2 {background : transparent url([[pix:theme|blockheaders/tag-label]]) no-repeat left top;margin-left:2px;}
+.region-content .block_adminblock .header h2 {background : transparent url([[pix:theme|blockheaders/admin]]) no-repeat left top;margin-left:2px;}
+
+

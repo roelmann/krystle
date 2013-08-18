@@ -1,0 +1,200 @@
+/* ProfileBar settings from Aardvark and Aardvark PostIt */
+/*********************************************************/
+
+.dir-rtl .headermenu {
+    float:right;
+}
+
+#profileblock {
+    float:right;
+    text-align:right;
+    max-width:500px;
+    right:0;
+}
+
+#profilepic {
+    text-align:right;
+    float:right;
+    display:inline;
+    margin:2px 2px -2px;
+}
+
+#profilepic img {
+    height: 70px;
+    width: 60px;
+    border:1px solid #fff;
+}
+
+#profilelogin {
+    text-align:right;
+    width:390px;
+    margin-right:0;
+    margin-top:auto;
+    float:right;
+    height:45px;
+}
+
+#profilelogin ul li {
+    padding-left:10px;
+    padding-right:0;
+    display:inline;
+    margin-right:0;
+    color:#aeaeae;
+}
+
+.profilelogin .loginform {
+    width:7em;
+    margin-left:4px;
+    display:inline;
+    background:#f9f9f9;
+    border:1px solid #ccc;
+    color:#333;
+    padding:4px;
+}
+
+#profilename {
+    text-align:right;
+    width:150px;
+    margin-right:0;
+    margin-top:auto;
+    margin-bottom:auto;
+    float:right;
+}
+
+#profilename ul li {
+    padding-left:10px;
+    padding-right:0;
+    display:inline;
+    margin-right:0;
+}
+
+.profilename .loginform {
+    width:5em;
+    margin-left:4px;
+    display:inline;
+    font-size:0.8em;
+}
+
+.profilename,.profilename a {
+    text-decoration:none;
+    font-size:12px;
+    text-transform:uppercase;
+    font-weight:400;
+    line-height:45px !important;
+    cursor:pointer !important;
+    border-right:none !important;
+    border-top:none !important;
+    border-bottom:none !important;
+    color:#fff !important;
+    margin:0 !important;
+}
+
+#profilebar {
+    background: none repeat scroll 0 0 transparent;
+    clear: both;
+    color: #000033;
+    font-size: 12px;
+    font-weight: 200;
+    position: fixed;
+    top: 75px;
+    width: 94%;
+    margin:0 auto;
+    z-index: 998;
+}
+
+#profilebar table{
+    background-color:transparent !important;
+}
+
+#profilebar_inner {
+    background:url([[pix:theme|profile/white80]]);
+    margin-right:auto;
+    margin-left:auto;
+    width:95%;
+    border:4px groove #ffffff;
+}
+
+#profilebar h4 {
+    font-size:12px;
+    text-transform:uppercase;
+    font-weight:400;
+    color:#000033;
+    margin:0 !important;
+    padding:8px 0 10px 10px;
+}
+
+#profilebar .block {
+    border:0 !important;
+    background:transparent !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+#profilebar .block_action {
+    display:none !important;
+}
+
+#profilebar .event a:hover,#profilebar .event a:visited {
+    color:#1D8AC3;
+    text-decoration:none;
+}
+
+#profilebar .date {
+    font-size:0.85em;
+    font-style:italic;
+    font-weight:400;
+    margin-left:20px;
+}
+
+#profilebar hr {
+    height:1px;
+    color:#ccc;
+    background-color:#ccc !important;
+    border:none;
+    border-style:none;
+}
+
+.profilebar_block_inner {
+    overflow:hidden;
+    padding:10px;
+}
+
+.profilebar_block,.profilebar_events,.profilebar_account {
+    float:left;
+    min-height:160px;
+    overflow:hidden;
+    padding:1%;
+}
+
+.profilebar_block,.profilebar_events {
+    width:29%;
+    border-right:1px groove #cccccc;
+}
+
+.profilebar_account {
+    width:35%;
+}
+
+#profileoptions ul li {
+    padding-left:0;
+    padding-right:0;
+    list-style-type:none;
+    margin-right:0;
+}
+
+.profileoptions a:hover {
+    background-color:transparent;
+    color:#0000ff;
+    text-decoration:none;
+}
+
+.profileoptions li:hover {
+    background:#f2f2ff;
+    text-decoration:none;
+}
+
+.profilebarclear {
+    clear:both;
+    padding-bottom:5px;
+}
+
