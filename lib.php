@@ -494,6 +494,12 @@ class krystle_expand_navigation extends global_navigation {
     private $expandtocourses = true;
     private $expandedcourses = array();
 
+    // Added in 2.6, so we need to specify these here so that earlier versions don't complain.
+    /** @var int site admin branch node type, used only within settings nav 71 */
+    const TYPE_SITE_ADMIN = 71;
+    /** var int Category displayed in MyHome navigation node */
+    const TYPE_MY_CATEGORY = 11;
+
     /**
      * Constructs the navigation for use in AJAX request
      */
@@ -544,6 +550,8 @@ class krystle_expand_navigation extends global_navigation {
                 $this->rootnodes['courses']->isexpandable = true;
             }
         }
+
+        $PAGE->requires->data_for_js('siteadminexpansion', false);
         
         $this->expand($this->branchtype, $this->instanceid);
     }
@@ -554,6 +562,7 @@ class krystle_expand_navigation extends global_navigation {
         // Branchtype will be one of navigation_node::TYPE_*
         switch ($branchtype) {
             case self::TYPE_ROOTNODE :
+            case self::TYPE_SITE_ADMIN :
                 if ($id === 'mycourses') {
                     $this->rootnodes['mycourses']->isexpandable = true;
                     $this->load_courses_enrolled();
@@ -569,6 +578,7 @@ class krystle_expand_navigation extends global_navigation {
                 }
                 break;
             case self::TYPE_CATEGORY :
+            case self::TYPE_MY_CATEGORY :
                 if (!empty($PAGE->theme->settings->coursesleafonly)) {
                     return false;
                 }
@@ -595,7 +605,7 @@ class krystle_expand_navigation extends global_navigation {
                             $coursenode->isexpandable = false;
                             break;
                         }
-                        $this->page->set_context(get_context_instance(CONTEXT_COURSE, $course->id));
+                        $this->page->set_context(context_course::instance($course->id));
                         $this->add_course_essentials($coursenode, $course);
                         if ($PAGE->course->id == $course->id && (!method_exists($this, 'format_display_course_content') || $this->format_display_course_content($course->format))) {
                             krystle_require_course_login($course);
@@ -613,7 +623,7 @@ class krystle_expand_navigation extends global_navigation {
                         WHERE cs.id = ?';
                 $course = $DB->get_record_sql($sql, array($id), MUST_EXIST);
                 try {
-                    $this->page->set_context(get_context_instance(CONTEXT_COURSE, $course->id));
+                    $this->page->set_context(context_course::instance($course->id));
                     if(!array_key_exists($course->id, $this->expandedcourses)) {
                         $coursenode = $this->add_course($course);
                         if (!$coursenode) {
@@ -788,16 +798,16 @@ class krystle_expand_navigation extends global_navigation {
      * @param stdClass $category
      * @param navigation_node $parent
      */
-    protected function add_category(stdClass $category, navigation_node $parent) {
+    protected function add_category(stdClass $category, navigation_node $parent, $nodetype = self::TYPE_CATEGORY) {
         if ((!$this->expandtocourses && $parent->key=='courses') || $parent->find($category->id, self::TYPE_CATEGORY)) {
             return;
         }
         $url = new moodle_url('/course/category.php', array('id' => $category->id));
         $context = context_coursecat::instance($category->id);
         $categoryname = format_string($category->name, true, array('context' => $context));
-        $categorynode = $parent->add($categoryname, $url, self::TYPE_CATEGORY, $categoryname, $category->id);
+        $categorynode = $parent->add($categoryname, $url, $nodetype, $categoryname, $category->id);
         if (empty($category->visible)) {
-            if (has_capability('moodle/category:viewhiddencategories', get_system_context())) {
+            if (has_capability('moodle/category:viewhiddencategories', context_system::instance())) {
                 $categorynode->hidden = true;
             } else {
                 $categorynode->display = false;
@@ -873,17 +883,18 @@ class krystle_expand_navigation extends global_navigation {
     }
 }
 
+
 class krystle_dummy_page extends moodle_page {
     /**
      * REALLY Set the main context to which this page belongs.
-     * @param object $context a context object, normally obtained with get_context_instance.
+     * @param object $context a context object, normally obtained with context_XXX::instance.
      */
     public function set_context($context) {
         if ($context === null) {
             // extremely ugly hack which sets context to some value in order to prevent warnings,
             // use only for core error handling!!!!
             if (!$this->_context) {
-                $this->_context = get_context_instance(CONTEXT_SYSTEM);
+                $this->_context = context_system::instance();
             }
             return;
         }

@@ -256,7 +256,7 @@ class theme_krystle_topsettings_renderer extends plugin_renderer_base {
     public function settings_search_box() {
         global $CFG;
         $content = "";
-        if (has_capability('moodle/site:config', get_context_instance(CONTEXT_SYSTEM))) {
+        if (has_capability('moodle/site:config', context_system::instance())) {
             $content .= $this->search_form(new moodle_url("$CFG->wwwroot/$CFG->admin/search.php"), optional_param('query', '', PARAM_RAW));
         }
         $content .= html_writer::empty_tag('br', array('clear' => 'all'));
@@ -315,6 +315,11 @@ class theme_krystle_topsettings_renderer extends plugin_renderer_base {
                 $item->hideicon = true;
             }
 
+            if ($item->action instanceof action_link && $hasicon && !$item->hideicon && (strip_tags($item->action->text)==$item->action->text)) {
+                // Icon hasn't already been rendered - render it now.
+                $item->action->text = $this->output->render($item->icon) . $item->action->text;
+            }
+
             $content = $this->output->render($item);
             if($isbranch && $item->children->count()==0) {
                 $expanded = false;
@@ -340,14 +345,17 @@ class theme_krystle_topsettings_renderer extends plugin_renderer_base {
                     }
                     $subnav = $mainsubnav;
                 }
-                if (!$expanded) {
-                    // re-use subnav so we don't have to reinitialise everything
-                    $subnav->expand($item->type, $item->key);
-                }
-                if (!isloggedin() || isguestuser()) {
-                    $subnav->set_expansion_limit(navigation_node::TYPE_COURSE);
-                }
                 $branch = $subnav->find($item->key, $item->type);
+                if ($branch === false) {
+                    if (!$expanded) {
+                        // re-use subnav so we don't have to reinitialise everything
+                        $subnav->expand($item->type, $item->key);
+                    }
+                    if (!isloggedin() || isguestuser()) {
+                        $subnav->set_expansion_limit(navigation_node::TYPE_COURSE);
+                    }
+                    $branch = $subnav->find($item->key, $item->type);
+                }
                 if($branch!==false) $content .= $this->navigation_node($branch);
             } else {
                 $content .= $this->navigation_node($item);
@@ -390,6 +398,7 @@ class theme_krystle_topsettings_renderer extends plugin_renderer_base {
     }
 
 }
+
 
 
 ?>

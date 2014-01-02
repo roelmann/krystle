@@ -64,7 +64,16 @@ if (!empty($PAGE->theme->settings->footnote)) {
     $footnote = '<!-- There was no custom footnote set -->';
 }
 
-if (check_browser_version("MSIE", "0")) {
+// Tell IE to use the latest engine (no Compatibility mode), if the user is using IE.
+$ie = false;
+if (class_exists('core_useragent')) {
+    if (core_useragent::check_ie_version()) {
+        $ie = true;
+    }
+} else if (check_browser_version("MSIE", "0")) {
+    $ie = true;
+}
+if ($ie) {
     header('X-UA-Compatible: IE=edge');
 }
 
